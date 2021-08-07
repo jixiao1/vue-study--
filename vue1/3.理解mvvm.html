@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mvvm</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <!--  mvvm 
+   1.m 表示model ： data中的数据
+   2. v: 视图： 模板代码
+   3. vm：视图模型 
+  -->
+  <div id="root">
+    <div>{{ school}}</div>
+    <h1>{{ address }}</h1>
+    <div>{{1+1}}</div>
+    <div>{{$options}}</div>
+    <div>{{$emit}}</div>
+    <div>{{_c}}</div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        school: '北京大学',
+        address: '北京市'
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+</html>

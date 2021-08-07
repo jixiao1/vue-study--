@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object.defineProperty</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const vm = new Vue({
+      el: '#root'
+    })
+    let number = 20;
+    let person = {
+       sex: '男',
+       name: 'zs'
+    }
+    Object.defineProperty(person, 'age', {
+      value: 20,
+      // enumerable: true, // 是否可以枚举
+      // writable: true, // 数据是否是可以修改的
+      // configurable: true // 控制属性是否是被删除的
+      get () {
+        console.log('读取age的数据')
+        return number
+      },
+      set (value) {
+        console.log('设置age的数据', value)
+        number = value
+      }
+    })
+    console.log(person)
+  </script>
+</body>
+</html>
