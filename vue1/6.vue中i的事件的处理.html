@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <button v-on:click="showInfo">查看详情</button>
+    <button @click="showInfo1(1, $event)">查看</button>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+
+      },
+      methods: {
+        showInfo(event) {
+          console.log(event.target.innerText);
+        },
+        showInfo1 (number, evnet) {
+          console.log(number)
+          console.log(evnet)
+        }
+      },
+    })
+  </script>
+</body>
+</html>
