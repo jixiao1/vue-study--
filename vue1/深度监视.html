@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天气案例</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h1>今天天气很{{ reTurenInfo () }}{{ x }}</h1>
+    <h1>今天天气很{{ reTurenInfo1 }}{{ y }}</h1>
+    <button @click="clickHandler">切换天气</button>
+    <div>{{ numbers.a }}</div>
+    <button @click="addClickHandler">a+</button>
+    <div>{{ numbers.b }}</div>
+    <button @click="addClickHadlerb">b+</button>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        isFo: true,
+        x: 0,
+        y: 0,
+        numbers: {
+          a: 1,
+          b: 2 
+        }
+      },
+      computed: {
+        reTurenInfo1 () {
+          return this.isFo ? '炎热': '凉爽'
+        }
+      },
+      methods: {
+        reTurenInfo () {
+          return this.isFo ? '炎热': '凉爽'
+        },
+        clickHandler () {
+          this.isFo = !this.isFo
+          this.x++;
+          this.y++;
+        },
+        addClickHandler () {
+          this.numbers.a++;
+        },
+        addClickHadlerb () {
+          this.numbers.b++;
+        }
+      },
+      watch: {
+        isFo: {
+          immediate: true,
+          handler (newVal, oldVal) {
+            console.log("isFo修改===", newVal, oldVal)
+          }
+        },
+        // 'numbers.a': {
+        //   immediate: true,
+        //   handler (newVal, oldVal) {
+        //     console.log("numbers.a===", newVal, oldVal);
+        //   }
+        // },
+        // 'numbers.b': {
+        //   immediate: true,
+        //   handler (newVal, oldVal) {
+        //     console.log("numbers.b===", newVal, oldVal);
+        //   }
+        // }
+        numbers: {
+          deep: true,
+          immediate: true,
+          handler (newVal, oldVal) {
+            console.log('numbers改变了。。。', newVal, oldVal)
+          }
+        }
+      }
+    })
+    vm.$watch('isFo', {
+      immediate: true,
+      handler (newVal, oldVal) {
+        console.log("isFo..a..a0", newVal, oldVal)
+      }
+    })
+  </script>
+</body>
+</html>

@@ -26,7 +26,7 @@
       data: {
         list: [
           { name: 'zs', count: 4800 },
-          { name: 'sjs', count: 3300 },
+          { name: 'sjs', count: 33300 },
           { name: 'zakaio', count: 1300 }
         ],
         koa: [],
@@ -35,6 +35,9 @@
       },
       methods: {
         comp () {
+          this.list = this.list.sort((a, b)=> {
+            return b.count - a.count
+          })
           let res = this.count - this.list[0].count
           console.log("res ====", res)
           if ( res < 100) {
@@ -61,7 +64,11 @@
       },
       computed: {
         fu () {
+          this.list = this.list.sort((a, b)=> {
+            return b.count - a.count
+          })
           let res = this.count - this.list[0].count
+          // let res = this.count - this.list[0].count
           console.log("res ====", res)
           if ( res < 100) {
             console.log("<100")
