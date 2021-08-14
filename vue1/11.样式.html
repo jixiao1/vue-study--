@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .base {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      margin: 10px 0;
+    }
+    .red {
+      background-color: red;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+    .green {
+      background-color: green;
+    }
+    .blue {
+      background-color: blue;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div class="base" v-text="name" :class="modal" @click="changeColor"></div>
+    <div class="base" v-text="name" :class="classArr"></div>
+    <div class="base" v-text="name" :class="classObj"></div>
+    <div class="base" v-text="name" :class="[classObj, classObj1]"></div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: 'zs',
+        modal: '',
+        arr: ['red', 'yellow', 'green'],
+        classArr: ['red', 'yellow', 'green'],
+        classObj: {
+          'red': true,
+          'yellow': false,
+          'green': true
+        },
+        classObj1: {
+          'blue': true
+        }
+      },
+      methods: {
+        changeColor () {
+          let index = Math.floor(Math.random()*3);
+          this.modal = this.arr[index];
+        }
+      },
+    })
+  </script>
+</body>
+</html>

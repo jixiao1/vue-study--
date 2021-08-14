@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <!-- 遍历数组 -->
+      <li v-for="(item ,index) in useArr" :key="item.id">
+       {{index}}---- {{item.name}}---{{item.sex}}
+      </li>
+    </ul>
+    <ul>
+      <!-- 遍历对象 -->
+      <li v-for="(value ,key) in cars" :key="key">
+        {{ key }}---{{value}}
+      </li>
+    </ul>
+    <ul>
+      <!-- 遍历字符串 -->
+      <li v-for="(item ,kie) in str" :key="kie">
+        {{item}}---{{kie}}
+      </li>
+    </ul>
+    <ul>
+      <li v-for="(number, index) in 5" :key="index">
+        {{number}}---{{index}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        useArr: [
+          {
+            id: 0,
+            name: 'zs',
+            sex: '男'
+          },
+          {
+            id: 1,
+            name: 'lucky',
+            sex: '女'
+          }
+        ],
+        cars: {
+          name: '奥迪',
+          price: '70万',
+          color: 'black'
+        },
+        str: 'aajajia'
+      }
+    })
+  </script>
+</body>
+</html>
