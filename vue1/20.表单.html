@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <form action="" @submit.prevent="demo">
+      账号: <input type="text" v-model.trim="UserInfo.account"><br><br>
+      密码: <input type="password" v-model="UserInfo.password"><br><br>
+      年龄: <input type="number" v-model:number="UserInfo.age"><br><br>
+      性别： 男<input type="radio" name="sex" v-model="UserInfo.sex" value="male">
+            女<input type="radio" name="sex" v-model="UserInfo.sex" value="female"><br><br>
+      爱好：
+          学习<input type="checkbox" v-model="UserInfo.hobby" value="study">
+          打游戏<input type="checkbox" v-model="UserInfo.hobby" value="game">
+          吃饭<input type="checkbox" v-model="UserInfo.hobby" value="chifan">
+          <br><br>
+      所属的学校： 
+      <select name="" id="" v-model="UserInfo.school">
+        <option value="">所属的学校</option>
+        <option value="beijing">北京大学</option>
+        <option value="qinghua">清华大学</option>
+        <option value="fudan">复旦大学</option>
+        <option value="jiaodnm">西安交通大学</option>
+      </select><br><br>
+      其他信息：
+      <textarea v-model.lazy="UserInfo.other"></textarea><br><br>
+      <input type="checkbox" v-model="UserInfo.agree">阅读并接受&nbsp; &nbsp;<a href="http://www.baidu.com">百度一下</a><br><br>
+      <button>提交</button>
+    </form>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        UserInfo: {
+          account: '',
+          password: '',
+          age: 18,
+          sex: 'female',
+          hobby: [],
+          school: 'beijing',
+          other: '',
+          agree: ''
+        }
+      },
+      methods: {
+        demo () {
+          // console.log(this._data)
+          console.log(JSON.stringify(this.UserInfo))
+        }
+      },
+    })
+  </script>
+</body>
+</html>

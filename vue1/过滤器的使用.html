@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过滤器的使用</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div>现在的时间是：{{ time }}</div>
+    <div>现在的时间是： {{fmtTime}}</div>
+    <div>现在的时间是: {{fmajTime ()}}</div>
+    <div>现在的时间是： {{ time | filterTime('YYYY年MM月DD日 HH:MM:ss') | mySplice}}</div>
+  </div>
+  <div id="root1">
+    <div>现在的时间是： {{ msg  | mySplice}}</div>
+    <!-- <div>{{ msg | mySplice}}</div> -->
+  </div>
+  <script>
+    Vue.filter('mySplice', (val)=> {
+      return val.slice(0,4)
+    })
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        time: Date.now()
+      },
+      computed: {
+        fmtTime () {
+         if (this.time) {
+          return dayjs(this.time).format("YYYY年MM月DD日 HH:MM:ss")
+         }
+        }
+      },
+      methods: {
+        fmajTime () {
+          if (this.time) {
+          return dayjs(this.time).format("YYYY年MM月DD日 HH:MM:ss")
+         }
+        }
+      },
+      filters: {
+        filterTime (val, str) {
+          // console.log("@", val)
+          return dayjs(val).format(str)
+        },
+        // mySplice (value) {
+        //   return value.slice(0,4)
+        // }
+      },
+      mounted() {
+        setInterval(()=> {
+          this.time = Date.now();
+        }, 1000)
+      },
+    })
+    const vm1  = new Vue({
+      el: '#root1',
+      data: {
+       msg: 'jhelqao lao'
+      }
+    })
+  </script>
+</body>
+</html>

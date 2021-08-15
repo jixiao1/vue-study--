@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue的生命周期</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div :style="{ opacity }">app的透明度变化</div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        opacity: 1
+      },
+      methods: {
+        changeOpacity () {
+          setInterval(() => {
+            this.opacity -= 0.1;
+            if (this.opacity <=0) {
+              this.opacity = 1;
+            }
+          }, 1000)
+        }
+      },
+      mounted() {
+        this.changeOpacity()
+      },
+    })
+  </script>
+</body>
+</html>

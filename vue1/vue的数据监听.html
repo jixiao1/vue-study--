@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue的数据监听</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h1>个人信息</h1>
+    <!-- <div v-for="(item, key) in userInfo" :key="key">
+      <div>{{ item }}</div>
+    </div> -->
+    <!-- 原数组改变的数组的方法 unshift pop push shift -->
+    <button @click="addClick">添加性别</button>
+    <button @click="addFariends">添加一个朋友</button>
+    <button @click="updateFriends">更新一个朋友</button>
+    <button @click="addHobby">添加一个爱好</button>
+    <button @click="updateHobby">更新爱好</button>
+    <button @click="removeShrock">过滤掉抽烟这个爱好</button>
+    <div v-if="userInfo.sex"> 性别: {{ userInfo.sex }}</div>
+    <div> 年龄: {{ userInfo.age }}</div>
+    <div> 姓名: {{ userInfo.name }}</div>
+    <div v-for="(val, key) in userInfo.firends" :key="key">
+     {{key}}: {{ val}}
+    </div>
+    <h1>爱好是：</h1>
+    <ul>
+      <li v-for="(item, index) in userInfo.hobby" :key="item+index">
+        {{item}}
+      </li>
+    </ul>
+     <h1>朋友列表：</h1>
+     <ul>
+       <li v-for="(item ,index) in userInfo.friends" :key="item.id">
+         {{item.name}}---{{item.age}}
+       </li>
+     </ul>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        userInfo: {
+          sex: '',
+          age: 20,
+          name: 'zs',
+          firends: {
+            age: 30,
+            name: 'zkla'
+          },
+          hobby: ['吃饭', '睡觉', '打豆豆', '抽烟'],
+          friends: [
+            { id: 001, name: 'zs', age: 20 },
+            { id: 002, name: 'zssss', age: 22 }
+          ]
+        }
+      },
+      methods: {
+        addClick () {
+          this.$set(this.userInfo, 'sex', '男')
+        },
+        addFariends () {
+          this.userInfo.friends.push({ id: 003, name: 'zssss1', age: 24 })
+        },
+        updateFriends () {
+          this.userInfo.friends.splice(0,1, { id: 001, name: 'jixiao', age: 20 })
+        },
+        addHobby () {
+          this.userInfo.hobby.unshift('开车')
+        },
+        updateHobby () {
+          // this.userInfo.hobby.splice(0,1,'打游戏')
+          // Vue.set(this.userInfo.hobby, 0, '睡觉觉')
+          // vm
+          this.$set(this.userInfo.hobby, 0, ' 睡觉觉+1')
+        },
+        removeShrock () {
+          this.userInfo.hobby = this.userInfo.hobby.filter(h => {
+            return h!== '抽烟'
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
