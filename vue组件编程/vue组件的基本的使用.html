@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VUE组件的基本的使用</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <hello></hello>
+    <school></school>
+    <hr>
+    <student></student>
+  </div>
+  <script>
+    const school = Vue.extend({
+      template: `<div>
+              <h1>学校信息：</h1>
+            <div>{{ school }}</div>
+            <div>{{ address }}</div>
+        </div>`,
+      data () {
+        return {
+          school: '清华大学',
+           address: '北京'
+        }
+      }
+    });
+    const student = Vue.extend({
+      template: `<div>
+        <h1>学生信息：</h1>
+            <div>{{ name  }}</div>
+            <div>{{ age  }}</div>
+        </div>`,
+      data () {
+        return {
+            name: '张三',
+            age: 20
+        }
+      }
+    });
+    const hello = Vue.extend({
+      template: `<div> hello world!</div>`
+    })
+    // 全局注册
+    Vue.component('hello', hello);
+    const vm = new Vue({
+      el: '#root',
+      components: {
+        school,
+        student
+      }
+    })
+  </script>
+</body>
+</html>
