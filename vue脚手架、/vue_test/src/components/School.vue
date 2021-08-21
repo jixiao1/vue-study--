@@ -7,6 +7,8 @@
     <div>y: {{y}}</div>
     <button @click="updateNum">改变num</button>
     <button @click="show">改变num2222</button>
+    <button @click="emitAbc">触发abc事件</button>
+    <button @click="offHandler">解绑</button>
   </div>
 </template>
 <script>
@@ -53,6 +55,15 @@ export default {
   methods: {
     updateNum () {
       this.num1++
+      this.$emit('add',1911900)
+    },
+    emitAbc () {
+      this.$emit("abc", this.school,1111, 666)
+    },
+    offHandler () {
+      // this.$off('add') //解绑一个自定义事件
+      // this.$off(['off', 'abc'])
+      this.$off()
     }
   },
     mounted() {
