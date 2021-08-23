@@ -1,15 +1,28 @@
 <template>
   <div id="app" ref="app">
+    <div class="cate_Container">
+      <Category :cate="food" msg="美食分类">
+        <h1 slot="footer">美食分类的简介</h1>
+        <img src="./assets/logo.png" class="cate_img" slot="center"/>
+      </Category>
+      <Category :cate="game" msg="游戏分类">
+        <h1 slot="footer">游戏分类的简介</h1>
+        <ul slot="center">
+        <li v-for="(item ,index) in game" :key="item+index">
+          {{item}}
+        </li>
+      </ul>
+      </Category>
+      <Category :cate="films" msg="电影分类">
+        <h1 slot="footer">电影分类的简介</h1>
+        <video slot="center"  src="./assets/video/2.mp4" controls class="container_video"></video>
+      </Category>
+    </div>
+    <Animate3></Animate3>
     <div>{{ msg }}</div>
     <div v-if="msg1">{{ msg1 }}</div>
     <button @click="clickHandler">拿到msg的信息</button>
     <img src="../src/assets/logo.png" alt="">
-    <!-- <School ref="school" 
-    :schoolAddress="schoolAddress"
-    :school="school"
-    :num="num"
-    @add="add"
-    v-on:abc="abc"/> -->
     <School ref="school1" 
     :schoolAddress="schoolAddress"
     :school="school"
@@ -27,6 +40,8 @@
     <StudentB></StudentB>
     <publish1></publish1>
     <publish2></publish2>
+    <Animate1></Animate1>
+    <Animatr2></Animatr2>
   </div>
 </template>
 
@@ -40,6 +55,10 @@ import StudentA from './components/StudentA'
 import StudentB from './components/StudentB'
 import publish1 from './components/Pubsub1'
 import publish2 from './components/publish2'
+import Animate1 from './components/Animative'
+import Animatr2 from './components/AnimateTest2'
+import Animate3 from './components/AnimateTest3'
+import Category from './components/CateGory'
 export default {
   name: 'App',
   components: {
@@ -51,7 +70,11 @@ export default {
     StudentA,
     StudentB,
     publish1,
-    publish2
+    publish2,
+    Animate1,
+    Animatr2,
+    Animate3,
+    Category
   },
   mounted() {
     
@@ -70,7 +93,10 @@ export default {
       { id: '001', todo: false, name: '吃蛋' },
       { id: '002', todo: false, name: '睡觉' },
       { id: '003', todo: true, name: '睡觉2456' }
-    ]
+    ],
+    food: ['海鲜', '鲍鱼', '人参'],
+    game: ['三国战纪', '海王', '王者荣耀'],
+    films: ['偶像剧', '爱情剧', '武侠剧']
     }
   },
   methods: {
@@ -117,5 +143,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.cate_Container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.cate_img {
+  width: 200px;
+  height: 200px;
+  margin-top: -30px;
+}
+.container_video {
+  width: 300px;
+  height: 200px;
+     margin-top: -20px;
+}
 </style>

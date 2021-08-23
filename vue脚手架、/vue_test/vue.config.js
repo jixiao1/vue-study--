@@ -5,5 +5,18 @@ module.exports = {
        entry: './src/qq.js'
     }
   },
-  lintOnSave: false
+  // https://m.maoyan.com/ajax/movieOnInfoList
+  lintOnSave: false,
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://m.maoyan.com',
+        changeOrigin: true,
+        // 重写path路径
+        pathRewrite: {
+          '/api': ''
+        }
+      }
+    }
+  }
 }
