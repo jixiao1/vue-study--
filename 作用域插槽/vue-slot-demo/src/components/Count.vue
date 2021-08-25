@@ -12,6 +12,8 @@
     <button @click="sub(n)">-</button>
     <button @click="jiaOdd(n)">奇数加1</button>
     <button @click="WATIEadd(n)">等一等</button>
+    <!-- <div>人物的数量: {{ this.$store.UserInfo.state.UserList.length }}</div> -->
+     <div>人物的数量: {{ num.length  }}</div>
   </div>
 </template>
 <script>
@@ -37,17 +39,19 @@ export default {
     //   return this.$store.state.subject
     // }
     // 写法一
-    // ...mapState({ sum: 'sum', school: 'school', subject: 'subject' })
+    ...mapState('sumInfo', { sum: 'sum', school: 'school', subject: 'subject' }),
+    ...mapState('UserInfo', { num: 'UserList' }),
     // 写法二
     // ...mapState(['sum', 'school', 'subject'])
     // 写法三
-    ...mapState({
-      sum: state => state.sum,
-      school: state => state.school,
-      subject: state => state.subject
-    }),
+    // ...mapState({
+    //   sum: state => state.sum,
+    //   school: state => state.school,
+    //   subject: state => state.subject,
+    //   num: state => state.UserList.length
+    // }),
     // ...mapGetters(['maxNum'])
-    ...mapGetters({ maxNum1: 'maxNum' })
+    ...mapGetters('sumInfo', { maxNum1: 'maxNum' })
   },
   methods: {
     // add () {
@@ -58,9 +62,9 @@ export default {
     //   // this.sum -= this.n
     //   this.$store.commit('jian', this.n)
     // },
-    ...mapMutations({ add: 'JIA', sub: 'jian' }),
+    ...mapMutations('sumInfo', { add: 'JIA', sub: 'jian' }),
     // ...mapActions({ oddAdd: 'jiaOdd', wriote: 'WATIEadd' })
-    ...mapActions(['jiaOdd', 'WATIEadd'])
+    ...mapActions('sumInfo', ['jiaOdd', 'WATIEadd'])
     // ...mapMutations(['JIA', 'jian']),
     // oddAdd () {
     //   this.$store.dispatch('jiaOdd', this.n)

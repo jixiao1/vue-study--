@@ -28,17 +28,21 @@
       </template>
     </slot-demo> -->
     <Count></Count>
+    <hr>
+    <Person></Person>
   </div>
 </template>
 
 <script>
 // import SlotDemo from './components/Slotdemo'
 import Count from './components/Count'
+import Person from './components/Person'
 export default {
   name: 'App',
   components: {
     // 'slot-demo': SlotDemo,
-    Count
+    Count,
+    Person
   }
 }
 </script>
