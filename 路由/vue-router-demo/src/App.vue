@@ -4,10 +4,18 @@
      <router-link to="/home" active-class="active" tag="div">home</router-link>
      <router-link to="/about" active-class="active" tag="div">about</router-link>
    </div>
-   <div>
      <router-view></router-view>
-   </div>
    <hr>
+   <div>
+     <el-row>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+     </el-row>
+   </div>
   </div>
 </template>
 
@@ -21,19 +29,4 @@ export default {
 </script>
 
 <style>
-.router_view_show {
-  display: flex;
-}
-.router_view_show a {
-  width: 200px;
-  height: 100px;
-  color: red;
-}
-.router_view_show .active {
-  background-color: lightblue;
-  color: black;
-  text-align: center;
-  line-height: 100px;
-  text-decoration: none;
-}
 </style>

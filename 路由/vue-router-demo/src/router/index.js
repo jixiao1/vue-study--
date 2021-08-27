@@ -4,7 +4,7 @@ import About from '../components/Abount.vue'
 import News from '../components/News.vue'
 import Message from '../components/Message.vue'
 import Detail from '../components/Detail.vue'
-export default new VueRouter({
+const router = new VueRouter({
   routes: [
     {
       path: '/',
@@ -16,12 +16,18 @@ export default new VueRouter({
       children: [
         {
           path: 'news',
-          component: News
+          component: News,
+          meta: {
+            isAuto: true
+          }
         },
         {
           path: 'message',
           name: 'message',
           component: Message,
+          meta: {
+            isAuto: true
+          },
           children: [
             {
               // path: 'detail/:id/:title',
@@ -53,3 +59,18 @@ export default new VueRouter({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // console.log(to, from)
+  if (to.meta.isAuto) {
+    if (to.path === '/home/news' || to.path === '/home/message') {
+      if (localStorage.getItem('school') === 'guigu') {
+        next()
+      } else {
+        alert('没有权限')
+      }
+    } else {
+      next()
+    }
+  }
+})
+export default router

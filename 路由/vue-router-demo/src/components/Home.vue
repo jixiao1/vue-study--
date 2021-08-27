@@ -6,7 +6,10 @@
     </div>
     <hr>
     <div>
-      <router-view></router-view>
+      <keep-alive include="News">
+        <router-view></router-view>
+      </keep-alive>
+      <!-- <router-view></router-view> -->
     </div>
   </div>
 </template>

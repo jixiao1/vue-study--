@@ -22,6 +22,10 @@
               title: item.title
             }
           }">{{item.title}}</router-link>
+          <button @click="pushShow(item)">push</button>
+          <button @click="replaceShow(item)">replaceShow</button>
+          <button @click="goClick">go</button>
+          <button @click="backClick">back</button>
        </div>
      </div>
      <hr>
@@ -38,6 +42,39 @@ export default {
         { id: '0002', title: '标题2' }
       ]
     }
+  },
+  methods: {
+    pushShow (item) {
+      this.$router.push(
+        {
+          name: 'detail',
+          query: {
+            id: item.id,
+            title: item.title
+          }
+        }
+      )
+    },
+    replaceShow (item) {
+      this.$router.replace(
+        {
+          name: 'detail',
+          query: {
+            id: item.id,
+            title: item.title
+          }
+        }
+      )
+    },
+    goClick () {
+      this.$router.go(1)
+    },
+    backClick () {
+      this.$router.back()
+    }
+  },
+  beforeDestroy () {
+    console.log('message组件被销毁了....')
   }
 }
 </script>
