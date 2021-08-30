@@ -1,43 +1,49 @@
 <template>
   <div>
-    <div>vue3name: {{ name }}</div>
-    <div>vue3age: {{ age }}</div>
-    <div>vue2name: {{ vue2name }}</div>
-    <div v-if="sonValue">{{ sonValue }}</div>
-    <button @click="sayHello">(vue3中的方法)点击说姓名</button>
-    <button @click="sayName">(vue2中的方法)点击说名字</button>
-    <hr>
-    <RefComponent></RefComponent>
-    <hr>
-    <ReactveComponent></ReactveComponent>
-    <hr>
-    <Proxydemoi></Proxydemoi>
-    <hr>
-    <EmitDemo msg="123" lop="lop" @hello="helloClick">
-      <div>匿名插槽</div>
-      <template v-slot:aloa>
-        <div>
-          具名插槽
-        </div>
-      </template>
-    </EmitDemo>
-    <hr>
-    <ComputedDemo></ComputedDemo>
-    <hr>
-    <WatchDemo></WatchDemo>
-    <hr>
-    <watchEffect1></watchEffect1>
-    <hr>
-    <button @click="isShoiw">show/hide</button>
-    <div v-if="isShow">
-      <liveComponent1></liveComponent1>
+    <div v-if="false">
+       <div>vue3name: {{ name }}</div>
+      <div>vue3age: {{ age }}</div>
+      <div>vue2name: {{ vue2name }}</div>
+      <div v-if="sonValue">{{ sonValue }}</div>
+      <button @click="sayHello">(vue3中的方法)点击说姓名</button>
+      <button @click="sayName">(vue2中的方法)点击说名字</button>
+      <hr>
+      <RefComponent></RefComponent>
+      <hr>
+      <ReactveComponent></ReactveComponent>
+      <hr>
+      <Proxydemoi></Proxydemoi>
+      <hr>
+      <EmitDemo msg="123" lop="lop" @hello="helloClick">
+        <div>匿名插槽</div>
+        <template v-slot:aloa>
+          <div>
+            具名插槽
+          </div>
+        </template>
+      </EmitDemo>
+      <hr>
+      <ComputedDemo></ComputedDemo>
+      <hr>
+      <WatchDemo></WatchDemo>
+      <hr>
+      <watchEffect1></watchEffect1>
+      <hr>
+      <button @click="isShoiw">show/hide</button>
+      <div v-if="isShow">
+        <liveComponent1></liveComponent1>
+      </div>
+      <hr>
+      <div>
+        <Sumdemo></Sumdemo>
+      </div>
+      <hr>
+      <Test></Test>
+      <hr>
     </div>
+    <ToRefsDemo></ToRefsDemo>
     <hr>
-    <div>
-      <Sumdemo></Sumdemo>
-    </div>
-    <hr>
-    <Test></Test>
+    <ToRAW1></ToRAW1>
   </div>
 </template>
 
@@ -52,6 +58,8 @@ import watchEffect1 from './components/WatchEffect1'
 import liveComponent1 from './components/LiveComponent'
 import Sumdemo from './components/SumDemo'
 import Test from './components/Test'
+import ToRefsDemo from  './components/ToRefsDemo'
+import ToRAW1 from './components/toRaw'
 import { ref } from 'vue'
 export default {
   name: 'App',
@@ -64,7 +72,9 @@ export default {
     watchEffect1,
     liveComponent1,
     Sumdemo,
+    ToRefsDemo,
     Test,
+    ToRAW1,
     'Proxydemoi': demo
   },
   data () {

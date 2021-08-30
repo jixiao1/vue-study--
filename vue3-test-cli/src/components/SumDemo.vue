@@ -8,14 +8,12 @@
   </div>
 </template>
 <script>
-// import { ref, onMounted, reactive, onBeforeUnmount } from 'vue'
 import { ref } from 'vue'
 import usePoint from '../hooks/index.js'
 export default {
   name: 'Sumdemo',
   setup () {
     let sum = ref(0)
-    // let target = document.getElementById('Sumdemo')
     let point =  usePoint()
     return {
       sum,
