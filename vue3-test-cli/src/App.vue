@@ -44,6 +44,10 @@
     <ToRefsDemo></ToRefsDemo>
     <hr>
     <ToRAW1></ToRAW1>
+    <hr>
+    <customRef></customRef>
+    <hr>
+    <Father></Father>
   </div>
 </template>
 
@@ -60,6 +64,8 @@ import Sumdemo from './components/SumDemo'
 import Test from './components/Test'
 import ToRefsDemo from  './components/ToRefsDemo'
 import ToRAW1 from './components/toRaw'
+import customRef from './components/CustomeRef'
+import Father from './components/divFather'
 import { ref } from 'vue'
 export default {
   name: 'App',
@@ -75,6 +81,8 @@ export default {
     ToRefsDemo,
     Test,
     ToRAW1,
+    customRef,
+    Father,
     'Proxydemoi': demo
   },
   data () {
